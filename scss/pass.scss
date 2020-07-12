@@ -1,0 +1,58 @@
+.pass {
+    position: relative;
+    margin: 1.5em 15px 1.5em 0;
+    padding: 0 5px;
+    width: 80%;
+    line-height: 90px;
+    vertical-align: middle;
+    text-align: center;
+    color: #FFF;
+    font-size: 20px;
+    font-weight: bold;
+    background: #ff8e9d;
+    border-radius: 1em;
+    box-sizing: border-box;
+}
+
+.pass.white{
+    transform-origin: right 50%;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.pass.black{
+    transform-origin: left 50%;
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.pass.white:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -25px;
+    margin-top: -15px;
+    border: 15px solid transparent;
+    border-left-color:#ff8e9d;
+    z-index: 0;
+}
+
+.pass.black:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -25px;
+    margin-top: -15px;
+    border: 15px solid transparent;
+    border-right-color:#ff8e9d;
+    z-index: 0;
+}
+
+@keyframes abc {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

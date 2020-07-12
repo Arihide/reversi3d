@@ -1,0 +1,229 @@
+// リバーシ全体の大きなレイアウトを記述するscss
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
+// #コンポーネントが配置される要素。HTML側に定義
+#reversi-container {
+
+    width: 100% !important;
+    height: 100vh !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    color: white; // 基本的に文字は白色
+
+    h2 {
+        text-shadow: white 1px 0 10px;
+        font-weight: 300;
+    }
+
+    * {
+        -ms-user-select: none;
+        /* IE 10+ */
+        -moz-user-select: -moz-none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    // 大元のコンポーネント
+    #reversi-root {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        display: flex;
+        background-color: black;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, "Helvetica Neue", "游ゴシック Medium", YuGothic, YuGothicM, "Hiragino Kaku Gothic ProN", メイリオ, Meiryo, sans-serif;
+        font-weight: 300;
+
+        // 上の石の数とか表示される部分
+        #reversi-info{
+            width: 100%;
+            margin-top: 1em;
+            max-height: 150px;
+            flex: 0 0 12%;
+            // color: white;
+        }
+
+        // オセロ盤が描画される部分
+        #reversi-canvas {
+            min-width: 100%;
+            max-width: 100%;
+            height: 100%;
+            min-height: 0;
+            align-self: stretch;
+            flex: 1 1 auto;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        // 下の部分
+        #reversi-menubar {
+            width: 100%;
+            max-height: 100px;
+            flex: 0 0 8%;
+        }
+
+        #reversi-menu,
+        #reversi-result {
+            color: white;
+            background-color: rgba(100, 100, 100, 0.3);
+            min-width: 100%;
+            height: 100%;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            position: absolute;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 10;
+        }
+
+        #reversi-menu {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: space-around;
+            visibility: visible;
+            transition: all 0.3s;
+
+            &-enter {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            &-active {
+                opacity: 1;
+                transition: opacity 300ms, transform 300ms;
+            }
+
+            &-exit {
+                opacity: 1;
+            }
+
+            &-active {
+                opacity: 0;
+                transition: opacity 300ms, transform 300ms;
+            }
+
+            .reversi-menu-item {
+                width: 80%;
+                max-width: 500px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+            }
+
+            input {
+                display: none;
+            }
+
+            label {
+                display: flex;
+                background-color: transparent;
+                flex: 0 0 5rem;
+                cursor: pointer;
+                justify-content: center;
+                align-items: center;
+                max-width: 200px;
+                height: 50px;
+                margin: 0 10px;
+                font-size: 100%;
+                border: solid 2px #555;
+                border-radius: 5px;
+            }
+
+            input[type="radio"]:checked+label {
+                border-color: white;
+                z-index: 10;
+            }
+
+            input[type="radio"]:disabled+label {
+                color: #555;
+                border-color: #555;
+            }
+        }
+
+        #reversi-result-message {
+            color: white;
+            font-size: 3rem;
+            text-shadow: 1px 1px 0 #000
+        }
+
+        .reversi-play-button {
+            // margin-bottom: 100px;
+            width: 30%;
+            max-width: 500px;
+        }
+
+        .reversi-button {
+            // width: 80%;
+            // max-width: 500px;
+            height: 50px;
+            font-size: 100%;
+            color: white;
+            border: solid 1px white;
+            border-radius: 3px;
+            background-color: transparent;
+            cursor: pointer;
+            outline: none;
+            transition-property: background-color color;
+            transition-duration: .2s;
+
+            &:hover {
+                color: black;
+                background-color: white;
+            }
+        }
+    }
+}
+
+// LOADING
+@keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+.reversi-loading-container {
+    position: absolute;
+    margin: 0;
+    background: #000;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-exit {
+        opacity: 1;
+    }
+
+    &-exit-active {
+        opacity: 0;
+        transition: opacity 200ms;
+    }
+}
+
+.reversi-loading {
+    animation: fadeIn 500ms linear 1s;
+    width: 200px;
+    color: white;
+
+    &-message {
+        font-size: 20px;
+        text-align: center;
+    }
+}

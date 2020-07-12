@@ -1,0 +1,3 @@
+Redux DevTools で特定のStateを再現するためのファイルを置いてる
+
+import後は「R」キーを押すと石が正しく配置される

@@ -1,0 +1,187 @@
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    -webkit-tap-highlight-color: rbga(0, 0, 0, 0);
+}
+
+
+.page {
+    transition-property: transform;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+}
+
+.page-enter {
+    transform: translate(-100%, 0);
+}
+
+.page-enter-active {
+    transform: translate(0, 0);
+}
+
+.page-exit {
+    transform: translate(-100%, 0);
+}
+
+.page-exit-done {
+    transform: translate(-100%, 0);
+}
+
+.setting-container {
+    position: absolute;
+    background-color: rgba(30, 30, 30, 0.9);
+    left: 0;
+    right: 0;
+    bottom: 13%;
+    margin: 0 auto;
+    width: 90%;
+    border-radius: 5px;
+    max-width: 350px;
+    z-index: 10;
+    overflow-x: hidden;
+}
+
+.setting-container::after {
+    content: "";
+    display: none;
+    position: relative;
+}
+
+.setting {
+
+
+    &,
+    &-next {
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: stretch;
+        margin: 0 auto;
+        width: 90%;
+        border-radius: 5px;
+        max-width: 350px;
+        z-index: 10;
+    }
+
+    & {
+        left: 0;
+    }
+
+    &-next {
+        position: absolute;
+        left: 105%;
+        top: 0;
+    }
+
+
+    &-header {
+        position: relative;
+        text-align: center;
+    }
+
+    // 個別の設定項目
+    &-item {
+        display: flex;
+        flex-direction: row;
+        // justify-content: space-around;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 100px;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid gray;
+        }
+    }
+
+    &-close-button {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        right: 10px;
+        padding: 5px;
+        margin: 0;
+        z-index: 20000;
+    }
+
+    .setting-back {
+        padding: 10px;
+    }
+
+    // トグルボタン
+    input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        display: block;
+        width: 50px;
+        height: 25px;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        z-index: 300;
+
+        &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto 0;
+            width: 100%;
+            height: 50%;
+            max-height: 30px;
+            background-color: rgb(199, 199, 199);
+            border-radius: 20px;
+            transition: 200ms;
+        }
+
+        &:checked::before {
+            background-color: rgb(199, 199, 0);
+        }
+
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0%;
+            margin: auto;
+            height: 100%;
+            width: 50%; // padding-left: 50%;
+            background-color: white;
+            border-radius: 50%;
+            transition: 200ms;
+        }
+
+        &:checked::after {
+            left: 50%;
+            background-color: yellow;
+        }
+
+    }
+
+    // 選択
+    input[type="radio"] {
+
+        display: none;
+
+        &:not(:checked)~span {
+            visibility: hidden;
+        }
+
+        &:disabled~span {
+            border-color: #555;
+        }
+    }
+
+}

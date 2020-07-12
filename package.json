@@ -1,0 +1,56 @@
+{
+  "name": "reversi",
+  "version": "1.0.0",
+  "description": "リバーシ（製作中）",
+  "main": "index.js",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "react-transition-group": "^4.4.1",
+    "redux": "^4.0.5",
+    "reversi.js": "git+https://github.com/Arihide/reversi.js.git",
+    "three": "^0.118.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/plugin-proposal-decorators": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.6.0",
+    "file-loader": "^6.0.0",
+    "gh-pages": "^3.1.0",
+    "html-webpack-plugin": "^4.3.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "react-svg-loader": "^3.0.3",
+    "sass": "^1.26.9",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^4.2.2",
+    "worker-loader": "^2.0.0"
+  },
+  "scripts": {
+    "start": "npx webpack-dev-server --config webpack.dev.js",
+    "build": "rm ./dist/*; npx webpack --mode production --config webpack.prod.js",
+    "deploy": "npx gh-pages -d dist --remote github --branch gh-pages"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://arihide@bitbucket.org/arihide/reversi.git"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-decorators"
+    ]
+  },
+  "author": "Arihide Takahashi",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/arihide/reversi#readme"
+}

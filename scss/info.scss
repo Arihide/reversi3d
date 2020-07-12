@@ -1,0 +1,66 @@
+/*
+上の石の数とか表示するところ 
+ */
+#reversi-info {
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: hidden;
+    white-space: nowrap;
+
+    &-middle {
+        width: 15%;
+        min-width: 80px
+    }
+
+    #reversi-info-black,
+    #reversi-info-white {
+        padding: 5px;
+        border: 3px solid #555;
+        border-radius: 15px;
+        width: 30%;
+        height: 100%;
+        max-width: 200px;
+        max-height: 100px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    .disc-num-black,
+    .disc-num-white {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .circle-container {
+        width: 30%;
+        max-width: 50px;
+        margin: 3px;
+        margin-left: 5%;
+
+        .circle {
+            background-color: white;
+            border-radius: 50%;
+            width: 100%;
+            padding-bottom: 100%;
+
+            /* width and height can be anything, as long as they're equal */
+            &-black {
+                @extend .circle;
+                background-color: black;
+                box-shadow: -1px -1px 7px 1px white;
+            }
+
+            &-white {
+                @extend .circle;
+                background-color: #eee;
+                box-shadow: -1px -1px 7px 1px #bbb;
+            }
+        }
+    }
+}
