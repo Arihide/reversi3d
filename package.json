@@ -10,7 +10,7 @@
     "react-transition-group": "^4.4.1",
     "redux": "^4.0.5",
     "reversi.js": "git+https://github.com/Arihide/reversi.js.git",
-    "three": "^0.118.3"
+    "three": "^0.125.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
